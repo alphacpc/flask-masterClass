@@ -1,0 +1,56 @@
+{% extends('base.html') %}
+
+{% block title %}
+    <title>Youtube Downloader</title>
+{% endblock %}
+
+{% block content %}
+
+    <div class="divError">
+        <p>Erreur</p>
+    </div>
+
+    <div class="divHeader">
+        <h1> <span>Télécharger</span> des <span>videos</span> en toute simplicité</h1>
+        <span class="bouleTop"></span>
+        <div class="grains">
+            {% for div in range(9)%}
+            <div>
+                {% if div%2==0 %}
+                    {% for span in range(40)%}
+                        <span></span>
+                    {% endfor %}
+                {% else %}
+                    {% for span in range(10)%}
+                        <span class="spanBoule"></span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="divContainer">
+        <form method="post">
+            <input type="text" id="inputText" placeholder="Exemple: https://www.youtube.com/wghKHFDHJ65JJ">
+            <input type="submit" id="inputSubmit" value="Charger">
+        </form>
+
+
+        <div class="divVideos">
+            <ul id="ulVideos">
+                {% for item in range(10)%}
+                <li>
+                    <span>Titre 1
+                        Lorem ipsum
+                    </span>
+                    <span>Durée</span>
+                    <span>Qualité</span>
+                    <span>Taille</span>
+                    <button>Télécharger</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

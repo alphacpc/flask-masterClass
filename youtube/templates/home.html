@@ -11,7 +11,7 @@
     </div>
 
     <div class="divHeader">
-        <h1> <span>Télécharger</span> des <span>videos</span> en toute simplicité</h1>
+        <!-- <h1> <span>Télécharger</span> des <span>videos</span> en toute simplicité</h1> -->
         <span class="bouleTop"></span>
         <div class="grains">
             {% for div in range(9)%}
@@ -32,25 +32,40 @@
 
     <div class="divContainer">
         <form method="post">
-            <input type="text" id="inputText" placeholder="Exemple: https://www.youtube.com/wghKHFDHJ65JJ">
+            <input type="text" id="inputText" name="inputText" placeholder="Exemple: https://www.youtube.com/wghKHFDHJ65JJ">
             <input type="submit" id="inputSubmit" value="Charger">
         </form>
 
 
         <div class="divVideos">
-            <ul id="ulVideos">
-                {% for item in range(10)%}
-                <li>
-                    <span>Titre 1
-                        Lorem ipsum
-                    </span>
-                    <span>Durée</span>
-                    <span>Qualité</span>
-                    <span>Taille</span>
-                    <button>Télécharger</button>
-                </li>
+            {% if videos %}
+
+                {% for video in videos %}
+                    <div class="card">
+                        <img src="{{yt.thumbnail_url}}" alt="hello" />
+                        <div>
+                            <h2>{{yt.title}}</h2>
+                            <p class="res">
+                                <span>{{yt.views}} vues</span>
+                                <span>Résolution: {{video.resolution}}</span>
+                            </p>
+                        </div>
+                        <div class="divLink">
+                            <a href="/downloader/{{video.itag}}/{{url}}">Télécharger</a>
+                            
+                        </div>
+                    </div>
                 {% endfor %}
-            </ul>
+
+            {% else %}
+
+                <div class="para">
+                    <p>Aucune video pour le moment !</p>
+                </div>
+
+            {% endif %}
+
+            
         </div>
     </div>
 {% endblock %}
